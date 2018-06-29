@@ -5,7 +5,7 @@
 	nome VARCHAR(100) NOT NULL,
 	dificuldade TINYINT NOT NULL,
 	funcao VARCHAR(10) NOT NULL,
-	idade CHAR(2) NOT NULL,
+	idade CHAR(2),
 	nome_verdadeiro VARCHAR(100) NOT NULL,
 	ocupacao VARCHAR(100) NOT NULL,
 	base VARCHAR(50) NOT NULL,
@@ -18,11 +18,11 @@
 	id_heroi INT,
 	nome VARCHAR(100) NOT NULL,
 	descricao TEXT DEFAULT 'N/A',
-	FOREIGN KEY (id_heroi) REFERENCES herois(id)
+	FOREIGN KEY (id_heroi) REFERENCES heroes(id)
 	
 	);
 	
-	SELECT id 'ID',nome 'Nome', dificuldade 'Dificuldade', funcao 'Função do herói' FROM heroes;
+	SELECT id 'ID',nome 'Nome', dificuldade 'Dificuldade', funcao 'Função do herói', idade, nome_verdadeiro, ocupacao, base FROM heroes;
 
 	
 	
@@ -61,7 +61,7 @@
 	((SELECT id FROM heroes WHERE nome = 'TRACER'), 'RECORDAÇÃO', NULL),
 	((SELECT id FROM heroes WHERE nome = 'TRACER'), 'BOMBA ELETROMAGNÉTICA', NULL);
 
-	INSERT INTO abilities (id_heroi, nome, descricao) VALUES
+	INSERT INTO abilities (id_heroi, nome, descricao) VALUES 
 	((SELECT id FROM heroes WHERE nome = 'BASTION'), 'CONFIGURAÇÃO: RECONHECIMENTO', NULL),
 	((SELECT id FROM heroes WHERE nome = 'BASTION'), 'CONFIGURAÇÃO: SENTINELA', NULL),
 	((SELECT id FROM heroes WHERE nome = 'BASTION'), 'RECONFIGURAR', NULL),
@@ -237,6 +237,6 @@
 	((SELECT id FROM heroes WHERE nome = 'MOIRA'), 'DESVANECER', NULL),
 	((SELECT id FROM heroes WHERE nome = 'MOIRA'), 'COALESCÊNCIA', NULL);
 
-	
+
 
 	
