@@ -5,6 +5,10 @@
 	nome VARCHAR(100) NOT NULL,
 	dificuldade TINYINT NOT NULL,
 	funcao VARCHAR(10) NOT NULL,
+	idade CHAR(2) NOT NULL,
+	nome_verdadeiro VARCHAR(100) NOT NULL,
+	ocupacao VARCHAR(100) NOT NULL,
+	base VARCHAR(50) NOT NULL,
 	PRIMARY KEY(id)
 	);
 
@@ -22,34 +26,34 @@
 
 	
 	
-	INSERT INTO heroes (nome, dificuldade, funcao) VALUES 
-	('D.VA', 2, 'TANQUE'),
-	('ORISA', 2, 'TANQUE'),
-	('REINHARDT', 1, 'TANQUE'),
-	('ROADHOG', 1, 'TANQUE'),
-	('WINSTON', 2, 'TANQUE'),
-	('ZARYA', 3, 'TANQUE'),
-	('BASTION', 1, 'DANO'),
-	('DOOMFIST', 3, 'DANO'),
-	('GENJI', 3, 'DANO'),
-	('HANZO', 3, 'DANO'),
-	('JUNKRAT', 2, 'DANO'),
-	('MCCREE', 2, 'DANO'),
-	('MEI', 3, 'DANO'),
-	('PHARAH', 2, 'DANO'),
-	('REAPER', 1, 'DANO'),
-	('SOLDADO: 76', 1, 'DANO'),
-	('SOMBRA', 3, 'DANO'),
-	('SYMMETRA', 2, 'DANO'),
-	('TORBJÖRN', 2, 'DANO'),
-	('TRACER', 2, 'DANO'),
-	('WIDOWMAKER', 2, 'DANO'),
-	('ANA', 1, 'SUPORTE'),
-	('BRIGITTE', 1, 'SUPORTE'),
-	('LÚCIO', 2, 'SUPORTE'),
-	('MERCY', 1, 'SUPORTE'),
-	('MOIRA', 2, 'SUPORTE'),
-	('ZENYATTA', 3, 'SUPORTE');
+	INSERT INTO heroes (nome, dificuldade, funcao, idade, nome_verdadeiro,ocupacao, base) VALUES 
+	('D.VA', 2, 'TANQUE', 19, 'Hana Song','Gamer profissional (anteriormente), piloto de Mecha', 'Busan, Coréia do Sul'),
+	('ORISA', 2, 'TANQUE',  1, 'Orisa','Guardiã Robô', 'Numbani'),
+	('REINHARDT', 1, 'TANQUE' ,  61, 'Reinhardt Wilhelm','Aventureiro', 'Estugarda, Alemanha'),
+	('ROADHOG', 1, 'TANQUE',  48, 'Mako Rutledge','Executor (anteriormente), Guarda-costas', 'Junkertown, Austrália'),
+	('WINSTON', 2, 'TANQUE', 29, 'Winston','Cientista, Aventureiro', 'Colônia Lunar do Horizonte (anteriormente)'),
+	('ZARYA', 3, 'TANQUE', 28, 'Aleksandra Zaryanova','Soldado', 'Fronte de Krasnoyarsk, Rússia'),
+	('BASTION', 1, 'DANO', 30, 'Autômato de Cerco E54 dos Laboratórios SST, “Bastion”','Autômato de batalha', 'Desconhecida' ),
+	('DOOMFIST', 3, 'DANO', 45, 'Akande Ogundimu','Mercenário', 'Oyo, Nigéria'),
+	('GENJI', 3, 'DANO', 35, 'Genji Shimada','Aventureiro', 'Monastério de Shambali, Nepal'),
+	('HANZO', 3, 'DANO', 38, 'Genji Shimada','Mercenário, Assassino', 'Hanamura, Japão'),
+	('JUNKRAT', 2, 'DANO', 25, 'Jamison Fawkes','Anarquista, Ladrão, Demolidor, Mercenário, Sucateiro', 'Junkertown, Austrália'),
+	('MCCREE', 2, 'DANO', 37, 'Jesse McCree','Caçador de recompensas, Mercenário, Sucateiro', 'Santa Fé, Novo México, EUA'),
+	('MEI', 3, 'DANO', 31, 'Mei-Ling Zhou','Climatologista, Aventureira', 'Xi’an, China'),
+	('PHARAH', 2, 'DANO', 32, 'Fareeha Amari','Chefe da segurança', 'Giza, Egito'),
+	('REAPER', 1, 'DANO', 0, 'Desconhecida','Mercenário', 'Desconhecida'),
+	('SOLDADO: 76', 1, 'DANO', 0, 'Desconhecida','Vigilante', 'Desconhecida'),
+	('SOMBRA', 3, 'DANO', 30, '░░░░░░','Hacker', 'Dorado, México'),
+	('SYMMETRA', 2, 'DANO', 28, 'Satya Vaswani','Arquitécnica', 'Utopaea, Índia'),
+	('TORBJÖRN', 2, 'DANO', 57, 'Torbjörn Lindholm','Designer de armas', 'Gotemburgo, Suécia'),
+	('TRACER', 2, 'DANO', 26, 'Lena Oxton','Aventureira', 'Londres, Inglaterra'),
+	('WIDOWMAKER', 2, 'DANO', 33, 'Amélie Lacroix','Assassina', 'Annecy, França'),
+	('ANA', 1, 'SUPORTE', 60, 'Ana Amari','Caçadora de recompensa', 'Cairo, Egito'),
+	('BRIGITTE', 1, 'SUPORTE', 23, 'Brigitte Lindholm','Engenheira Mecânica, Aventureira', 'Gotemburgo, Suécia'),
+	('LÚCIO', 2, 'SUPORTE', 26, 'Lúcio Correia dos Santos','DJ; Lutador da Liberdade', 'Rio de Janeiro, Brasil'),
+	('MERCY', 1, 'SUPORTE', 37, 'Angela Ziegler','Médico de campo, Socorrista', 'Zurique, Suíça'),
+	('MOIRA', 2, 'SUPORTE', 48, 'Moira O´Deorain','Geneticista', 'Dublin, Irlanda; Oásis, Iraque'),
+	('ZENYATTA', 3, 'SUPORTE', 20, 'Tekhartha Zenyatta','Guru andarilho, Aventureiro', 'Monastério de Shambali, Nepal');
 
 	INSERT INTO abilities (id_heroi, nome, descricao) VALUES
 	((SELECT id FROM heroes WHERE nome = 'TRACER'), 'PISTOLAS ELETROMAGNÉTICAS', NULL),
