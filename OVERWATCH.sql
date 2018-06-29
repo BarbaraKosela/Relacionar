@@ -1,4 +1,5 @@
-﻿	DROP TABLE heroes;
+﻿DROP TABLE abilities;
+	DROP TABLE heroes;
 	CREATE TABLE heroes(
 	
 	id INT IDENTITY(1,1),
@@ -12,7 +13,7 @@
 	PRIMARY KEY(id)
 	);
 
-	DROP TABLE abilities;
+	
 	CREATE TABLE abilities(
 	id INT IDENTITY(1,1) PRIMARY KEY,
 	id_heroi INT,
@@ -238,5 +239,5 @@
 	((SELECT id FROM heroes WHERE nome = 'MOIRA'), 'COALESCÊNCIA', NULL);
 
 
-
+	select * from abilities;
 	
