@@ -1,4 +1,4 @@
-﻿DROP TABLE abilities;
+﻿    DROP TABLE abilities;
 	DROP TABLE heroes;
 	CREATE TABLE heroes(
 	
