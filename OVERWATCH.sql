@@ -239,5 +239,6 @@
 	((SELECT id FROM heroes WHERE nome = 'MOIRA'), 'COALESCÊNCIA', NULL);
 
 
-	
+	SELECT * FROM abilities;
+
 	SELECT heroes.nome 'Nome do herói', abilities.nome 'Nome da habilidade' FROM abilities JOIN heroes ON (abilities.id_heroi = heroes.id)
