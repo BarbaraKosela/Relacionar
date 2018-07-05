@@ -62,3 +62,5 @@
 	SELECT COUNT(caracteristicas.nome) 'Número de alunos altruístas' FROM alunos JOIN caracteristicas ON (alunos.id = caracteristicas.id_alunos) WHERE caracteristicas.nome = 'Altruísta';
 	-- iii. Selecione a quantidade de alunos para cada categoria, agrupando pela categoria;
 	SELECT caracteristicas.nome 'A característica', COUNT(alunos.id) 'Quantidade de características' FROM caracteristicas JOIN alunos ON (caracteristicas.id_alunos = alunos.id) GROUP BY caracteristicas.nome;
+	-- iv. Selecione as características da aluna Sophia.
+	SELECT caracteristicas.nome 'Característica da Sophia' FROM alunos JOIN caracteristicas ON (alunos.id = caracteristicas.id_alunos) WHERE alunos.nome = 'Sophia';
