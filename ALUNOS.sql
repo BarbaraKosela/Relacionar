@@ -33,7 +33,7 @@
 
 	INSERT INTO caracteristicas(id_alunos, nome) VALUES 
 	((SELECT id FROM alunos WHERE nome = 'Alice'), 'Organizando(a)'),
-	((SELECT id FROM alunos WHERE nome = 'Alice'), 'Altruista');
+	((SELECT id FROM alunos WHERE nome = 'Alice'), 'Altruísta');
 
 	INSERT INTO caracteristicas(id_alunos, nome) VALUES 
 	((SELECT id FROM alunos WHERE nome = 'Sophia'), 'Pontual'),
@@ -55,5 +55,5 @@
 	((SELECT id FROM alunos WHERE nome = 'Joaquim'), 'Empático(a)'),
 	((SELECT id FROM alunos WHERE nome = 'Joaquim'), 'Altruísta');
 
-	SELECT * FROM caracteristicas;
-	SELECT * FROM alunos;
+	SELECT alunos.nome 'Nome do aluno', caracteristicas.nome 'Características do aluno' FROM alunos JOIN caracteristicas ON (alunos.id = caracteristicas.id_alunos);
+	SELECT COUNT(caracteristicas.nome) 'Número de alunos altruístas' FROM alunos JOIN caracteristicas ON (alunos.id = caracteristicas.id_alunos) WHERE caracteristicas.nome = 'Altruísta';

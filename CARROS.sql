@@ -1,6 +1,5 @@
-﻿	DROP TABLE carros;
+﻿    DROP TABLE carros;
 	DROP TABLE pessoas;
-	
 	CREATE TABLE pessoas(
 	id INT PRIMARY KEY IDENTITY(1,1),
 	nome VARCHAR(200),
