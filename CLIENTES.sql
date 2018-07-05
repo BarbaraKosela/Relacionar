@@ -144,3 +144,14 @@
 
 	-- x. Selecione o valor total das contas a pagar com o nome do cliente ordenando pelo nome docliente. Dica: deve agrupar.
 	SELECT SUM(contas_a_pagar.valor) 'Valor total das contas a pagar', clientes.nome 'Nome do cliente' FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente) GROUP BY clientes.nome ORDER BY clientes.nome 
+
+	-- CONTAS A RECEBER
+	-- xi. Alterar o valor do pagamento para R$ 1000 quando o sexo do cliente for Feminino;
+	UPDATE contas_a_receber set contas_a_receber.valor_recebido = 1000 FROM contas_a_receber inner JOIN clientes ON (clientes.id = contas_a_receber.id_cliente) 
+	WHERE clientes.sexo = 'F';
+	SELECT clientes.nome 'Nome', contas_a_receber.valor_recebido 'Valor recebido', clientes.sexo 'Sexo' FROM clientes JOIN contas_a_receber ON (clientes.id = contas_a_receber.id_cliente); 
+
+	-- xii. Alterar a data do pagamento para amanhã quando o nome do cliente começar com A ou S;
+	UPDATE contas_a_receber set contas_a_receber.data_pagamento = '2018-07-06' FROM contas_a_receber inner JOIN clientes ON (clientes.id = contas_a_receber.id_cliente) 
+	WHERE clientes.nome = 'Aluísio' OR clientes.nome = 'Salvador';
+	SELECT clientes.nome 'Nome', contas_a_receber.data_pagamento 'Data do pagamento' FROM clientes JOIN contas_a_receber ON (clientes.id = contas_a_receber.id_cliente); 
