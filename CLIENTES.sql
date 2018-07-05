@@ -138,3 +138,9 @@
 	-- viii. Selecione o nome do cliente, valor , data de vencimento, data de vencimento e valor pago;
 	SELECT clientes.nome 'Nome do cliente', contas_a_pagar.valor 'Valor', contas_a_pagar.data_vencimento 'Data do vencimento', contas_a_pagar.valor_pago 'Valor pago'
 	FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente); 
+
+	-- ix. Selecione o nome do cliente, valor, e o mês de vencimento;
+	SELECT clientes.nome 'Nome do cliente', contas_a_pagar.valor 'Valor', MONTH(contas_a_pagar.data_vencimento) 'Mês do vencimento' FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente);
+
+	-- x. Selecione o valor total das contas a pagar com o nome do cliente ordenando pelo nome docliente. Dica: deve agrupar.
+	SELECT SUM(contas_a_pagar.valor) 'Valor total das contas a pagar', clientes.nome 'Nome do cliente' FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente) GROUP BY clientes.nome ORDER BY clientes.nome 
