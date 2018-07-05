@@ -110,8 +110,7 @@
 	
 
 	-- iii. Apresente o nome cliente, e-mail com o maior e-mail de cada cliente.
-	SELECT emails.valor 'Maior email', clientes.nome 'Nome do cliente' FROM emails JOIN clientes ON (clientes.id = emails.id_cliente) WHERE LEN(emails.valor) = (SELECT MAX(LEN(emails.valor)));
-
+   
 
 	-- CELULARES:
 	-- iv. Selecione o nome e os celulares;
@@ -153,7 +152,7 @@
 
 	-- xii. Alterar a data do pagamento para amanhã quando o nome do cliente começar com A ou S;
 	UPDATE contas_a_receber set contas_a_receber.data_pagamento = '2018-07-06' FROM contas_a_receber inner JOIN clientes ON (clientes.id = contas_a_receber.id_cliente) 
-	WHERE clientes.nome = 'Aluísio' OR clientes.nome = 'Salvador';
+	WHERE clientes.nome LIKE 'A%' OR clientes.nome LIKE 'S%';
 	SELECT clientes.nome 'Nome', contas_a_receber.data_pagamento 'Data do pagamento' FROM clientes JOIN contas_a_receber ON (clientes.id = contas_a_receber.id_cliente); 
 
 	-- xiii. Selecione o nome e o total das contas a receber;
