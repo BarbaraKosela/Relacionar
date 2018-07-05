@@ -100,3 +100,41 @@
 	((SELECT id FROM clientes WHERE nome = 'Úrsula'), '2018-12-08', 78.97),
 	((SELECT id FROM clientes WHERE nome = 'Úrsula'), '2018-09-07', 987.65),
 	((SELECT id FROM clientes WHERE nome = 'Aluísio'), '2018-11-30', 123.45);
+
+
+	-- i. Selecione o nome e os e-mails;
+	SELECT clientes.nome 'Nome do cliente', emails.valor 'Email' FROM clientes JOIN emails ON (clientes.id = emails.id_cliente);
+
+	-- ii. Selecione o nome e os e-mails ordenando pelo nome do cliente e pelo e-mail;
+	SELECT clientes.nome 'Nome do cliente', emails.valor 'Email' FROM clientes JOIN emails ON (clientes.id = emails.id_cliente) ORDER BY clientes.nome;
+	
+
+	-- iii. Apresente o nome cliente, e-mail com o maior e-mail de cada cliente.
+	SELECT emails.valor 'Maior email', clientes.nome 'Nome do cliente' FROM emails JOIN clientes ON (clientes.id = emails.id_cliente) WHERE LEN(emails.valor) = (SELECT MAX(LEN(emails.valor)));
+
+
+	-- CELULARES:
+	-- iv. Selecione o nome e os celulares;
+	SELECT clientes.nome 'Nome do cliente', celulares.valor 'Telefone dos clientes' FROM clientes JOIN celulares ON (clientes.id = celulares.id_cliente);
+
+	-- v. Selecione o nome e os celulares quanto o status for ativo.
+	SELECT clientes.nome 'Nome do cliente', celulares.valor 'Telefone dos clientes' FROM clientes JOIN celulares ON (clientes.id = celulares.id_cliente) WHERE celulares.ativo = 1;
+
+	-- CONTAS A PAGAR
+	-- vi. Alterar o valor pago para R$ 100,00, data de pagamento como dia de hoje e status para pago quando o cliente for Salvador;
+	UPDATE contas_a_pagar set contas_a_pagar.valor_pago = 100, contas_a_pagar.data_vencimento =  '2018.07.05', 
+	contas_a_pagar.status_pessoa = 'pago' FROM contas_a_pagar inner JOIN clientes ON (clientes.id = contas_a_pagar.id_cliente) 
+	WHERE clientes.nome = 'Salvador';
+	SELECT clientes.nome 'Nome do cliente', contas_a_pagar.valor_pago 'Valor pago', contas_a_pagar.status_pessoa 'Status', contas_a_pagar.data_vencimento 'Data do vencimento' 
+	FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente); 
+
+	-- Alterar o valor pago para 700,00 , data de pagamento como dia de ontem e status para pago quando o cliente for Salvador e o valor da conta for R$ 700,00;
+	UPDATE contas_a_pagar set contas_a_pagar.valor_pago = 700, contas_a_pagar.data_vencimento =  '2018.07.04', 
+	contas_a_pagar.status_pessoa = 'PAGO' FROM contas_a_pagar inner JOIN clientes ON (clientes.id = contas_a_pagar.id_cliente) 
+	WHERE clientes.nome = 'Salvador' AND contas_a_pagar.valor = 700;
+	SELECT clientes.nome 'Nome do cliente', contas_a_pagar.valor_pago 'Valor pago', contas_a_pagar.status_pessoa 'Status', contas_a_pagar.data_vencimento 'Data do vencimento', contas_a_pagar.valor 'Valor'
+	FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente); 
+
+	-- viii. Selecione o nome do cliente, valor , data de vencimento, data de vencimento e valor pago;
+	SELECT clientes.nome 'Nome do cliente', contas_a_pagar.valor 'Valor', contas_a_pagar.data_vencimento 'Data do vencimento', contas_a_pagar.valor_pago 'Valor pago'
+	FROM clientes JOIN contas_a_pagar ON (clientes.id = contas_a_pagar.id_cliente); 
