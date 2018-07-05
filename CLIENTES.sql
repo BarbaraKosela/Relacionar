@@ -23,7 +23,7 @@
 	CREATE TABLE emails(
 	id INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	id_cliente INT NOT NULL,
-	valor TEXT NOT NULL,
+	valor VARCHAR(300) NOT NULL,
 	ativo BIT DEFAULT (1),
 	FOREIGN KEY (id_cliente) REFERENCES clientes(id)
 	);
@@ -110,7 +110,7 @@
 	
 
 	-- iii. Apresente o nome cliente, e-mail com o maior e-mail de cada cliente.
-   
+    SELECT clientes.nome, emails.valor FROM emails JOIN clientes ON (clientes.id = emails.id_cliente) WHERE LEN(valor) = (SELECT MAX(LEN(valor)) FROM emails) ;
 
 	-- CELULARES:
 	-- iv. Selecione o nome e os celulares;
