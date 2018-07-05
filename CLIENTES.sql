@@ -155,3 +155,9 @@
 	UPDATE contas_a_receber set contas_a_receber.data_pagamento = '2018-07-06' FROM contas_a_receber inner JOIN clientes ON (clientes.id = contas_a_receber.id_cliente) 
 	WHERE clientes.nome = 'Aluísio' OR clientes.nome = 'Salvador';
 	SELECT clientes.nome 'Nome', contas_a_receber.data_pagamento 'Data do pagamento' FROM clientes JOIN contas_a_receber ON (clientes.id = contas_a_receber.id_cliente); 
+
+	-- xiii. Selecione o nome e o total das contas a receber;
+	SELECT SUM(contas_a_receber.valor_a_receber) 'Total do valor a receber', clientes.nome 'Nome' FROM clientes JOIN contas_a_receber ON (clientes.id = contas_a_receber.id_cliente) GROUP BY clientes.nome ORDER BY clientes.nome; 
+
+	-- xiv. Selecione o nome e a quantidade de contas a receber de cada cliente.
+	SELECT COUNT(contas_a_receber.valor_a_receber) 'Quantidade de valor a receber', clientes.nome FROM clientes JOIN contas_a_receber ON (clientes.id = contas_a_receber.id_cliente) GROUP BY clientes.nome ORDER BY clientes.nome;
