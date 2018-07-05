@@ -31,10 +31,13 @@
 	((SELECT id FROM pessoas WHERE nome = 'Samuel Faria'), 'Renault', 'Clio', 1997, 1996, '1.0 8v', 'Verde', 5.500),
 	((SELECT id FROM pessoas WHERE nome = 'Florêncio Robalo'), 'Volkswagen', 'Golf', 1994, 1994, '1.0 8v', 'Verde', 5.500);
 
-	 SELECT pessoas.nome 'Nome', carros.modelo 'Modelo', carros.marca 'Marca', 
-	 carros.ano_fabricacao 'Ano de fabricação', carros.ano_lancamento 'Ano de lançamento', 
-	 carros.cor 'Cor', carros.preco 'Preço', carros.motor 'Motor' FROM pessoas 
+
+	-- i. Liste os carros juntamente com o dono do carro
+	 SELECT pessoas.nome 'Nome', carros.modelo 'Modelo' FROM pessoas 
 	 JOIN carros ON (pessoas.id = carros.id_pessoa)
+
+	-- ii. Liste os carros do Samuel
+	SELECT carros.modelo 'Nome dos carros do Samuel' FROM pessoas JOIN carros ON (pessoas.id = carros.id_pessoa) WHERE pessoas.nome = 'Samuel Faria';
 
 
 	
